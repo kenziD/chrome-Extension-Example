@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	button.addEventListener("click",function(){
 		console.log("click!");
 		chrome.tabs.executeScript(null, {
-		code: "document.body.style.backgroundColor=blue"
+		code: "document.body.style.backgroundColor='#C7EDCC'"
 	});
 	// window.close();
 	});
