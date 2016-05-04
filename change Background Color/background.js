@@ -1,8 +1,15 @@
-//this event will not fire if it has a popup html
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // No tabs or host permissions needed!
-  console.log('Turning ' + tab.url + ' red!');
-  chrome.tabs.executeScript({
-    code: 'document.body.style.backgroundColor="blue"'
-  });
+var recording = false;
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	console.log(request.action);
+	if(request.action=="get_status"){
+		sendResponse({'recording': recording});
+	}
+	if(request.action=="start"){
+		recording = true;
+		sendResponse({'recording': recording});
+	}
+	if(request.action=="stop"){
+		recording = false;
+		sendResponse({'recording': recording});
+	}
 });

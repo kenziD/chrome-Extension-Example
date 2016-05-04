@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "change the color",
+  "name": "changeColor",
   "description": "This extension shows a Google Image search result for the current page",
   "version": "1.0",
   "background":{
@@ -11,12 +11,12 @@
     {
       "matches": ["http://*/*","https://*/*"],
       "css":["highlight.css"],
-      "js": ["myscript.js"]
+      "js": ["myscript.js","jquery-1.11.3.min.js"]
     }
   ],
   "browser_action": {
   	"default_title": "change background color",
-    "default_icon": "background.png",
+    "default_icon": "logo.png",
     "default_popup": "popup.html"
   },
   "permissions": [
