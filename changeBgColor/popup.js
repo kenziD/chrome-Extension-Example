@@ -17,34 +17,45 @@ function changeColor() {
 }
 
 var colorPlate = document.querySelector('.colorLogo');
+var rorate0 = function(index) {
+
+}
 colorPlate.addEventListener("click", function() {
     var otherLi = document.querySelectorAll('.colorBtnList li:nth-child(n+2)');
     var animation1 = new Promise(function(resolve, reject) {
         otherLi[0].style.display = "block";
         window.setTimeout(function() {
-            otherLi[0].classList.add("display0deg");
-            otherLi[0].addEventListener("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function() {
+            // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+            otherLi[0].setAttribute("id", "display0deg");
+            otherLi[0].addEventListener("transitionend", function() {
                 console.log("over");
+                resolve("end");
             });
-        }, 100);
-
+        }, 0);
     });
-    animation1.then(function(val) {
-        console.log(val);
+    // var animation2 = new Promise(function(resolve, reject) {
+    //     otherLi[1].style.display = "block";
+    //     window.setTimeout(function() {
+    //         // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+    //         otherLi[1].setAttribute("id","display0deg");
+    //         otherLi[1].addEventListener("transitionend", function() {
+    //             console.log("over");
+    //             resolve("end");
+    //         });
+    //     }, 0);
+    // });
+
+    animation1.then(function() {
         otherLi[1].style.display = "block";
         window.setTimeout(function() {
-            otherLi[1].style.transform = "rotate(0deg)";
-        }, 10);
-    });
-    // for (var i = 0; i < otherLi.length; i++) {
-    //     //如果用display:block就没有动画过度效果了。奇怪。要怎么实现呢？
-    //     // otherLi[i].style.visibility = "visible";
+            // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+            otherLi[1].setAttribute("id", "display0deg");
+            otherLi[1].addEventListener("transitionend", function() {
+                console.log("over");
 
-    //     otherLi[i].style.display = "block";
-
-
-    // }
-
+            });
+        }, 0);
+    })
 });
 var selectBtn = document.querySelector('.select');
 

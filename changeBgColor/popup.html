@@ -62,21 +62,20 @@
         /*visibility:hidden;*/
     }
     
-    .list2 {
+    .colorBtnList li:nth-child(n+2):nth-child(even) {
         transform: rotateX(-90deg);
         transform-origin: top;
         transition: all .5s;
-        /*        display: block;*/
     }
     
-    .display0deg {
+    #display0deg {
         transform: rotateX(0deg);
     }
     
-    .colorBtnList li:nth-child(3) {
+    .colorBtnList li:nth-child(n+2):nth-child(odd) {
         transform: rotateX(90deg);
         transform-origin: top;
-        transition: all .5s .5s;
+        transition: all .5s;
         /*display: block;*/
     }
     
@@ -112,7 +111,7 @@
             </li>
             <!--
             -->
-            <li class="list2">
+            <li>
                 <button id="yellow" class="changeBg yellow">change yellow</button>
             </li>
             <!--
@@ -120,9 +119,9 @@
             <li>
                 <button class="changeBg black">change black</button>
             </li>
-            <!--   <li>
-               
-            </li> -->
+            <li>
+                <button class="changeBg black">change black</button>
+            </li>
         </ul>
         <button class="select start">start select</button>
     </div>
