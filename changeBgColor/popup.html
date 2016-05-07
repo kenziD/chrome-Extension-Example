@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    html,
+    body {
+        background-color: #222624;
+        color: white;
+        text-align: center;
+    }
+    
+    .main-wrap {
+        text-align: center;
+        background-color: #222624;
+        width: 150px;
+    }
+    
+    button {
+        width: 100px;
+        height: 50px;
+        border-radius: 8px;
+        /*margin: 10px auto;*/
+        outline: none;
+        border: none;
+        background-color: lightgreen;
+        cursor: pointer;
+    }
+    
+    .changeBg {
+        float: right;
+        border-radius: 0px;
+    }
+    
+    .capturing {
+        background-color: tomato;
+    }
+    
+    .colorLogo {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    
+    .colorBtnList {
+        padding: 0 !important;
+        margin-right: 24px;
+        transform-style: preserve-3d;
+        perspective: 200px;
+    }
+    
+    .colorBtnList li {
+        list-style: none;
+        line-height: 50px;
+    }
+    
+    .colorBtnList li:nth-child(n+2) {
+        list-style: none;
+        display: none;
+        /*visibility:hidden;*/
+    }
+    
+    .list2 {
+        transform: rotateX(-90deg);
+        transform-origin: top;
+        transition: all .5s;
+        /*        display: block;*/
+    }
+    
+    .display0deg {
+        transform: rotateX(0deg);
+    }
+    
+    .colorBtnList li:nth-child(3) {
+        transform: rotateX(90deg);
+        transform-origin: top;
+        transition: all .5s .5s;
+        /*display: block;*/
+    }
+    
+    .colorBtnList li:after {
+        content: "";
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+    }
+    
+    .green {
+        background-color: lightgreen;
+    }
+    
+    .yellow {
+        background-color: lightyellow;
+    }
+    
+    .black {
+        background-color: #b2b2b2;
+    }
+    </style>
+</head>
+
+<body>
+    <header>Protect your eye</header>
+    <div class="main-wrap">
+        <ul class="colorBtnList">
+            <li>
+                <img class="colorLogo" src="colorLogo.svg" />
+                <button class="changeBg green">change green</button>
+            </li>
+            <!--
+            -->
+            <li class="list2">
+                <button id="yellow" class="changeBg yellow">change yellow</button>
+            </li>
+            <!--
+            -->
+            <li>
+                <button class="changeBg black">change black</button>
+            </li>
+            <!--   <li>
+               
+            </li> -->
+        </ul>
+        <button class="select start">start select</button>
+    </div>
+    <script type="text/javascript" src="popup.js"></script>
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+</body>
+
+</html>
