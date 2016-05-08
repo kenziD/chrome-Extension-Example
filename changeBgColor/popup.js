@@ -2,61 +2,75 @@
 
 function changeColor() {
     var changeBgBtn = document.querySelectorAll('.changeBg');
-    console.log("li", changeBgBtn);
-    var colorPlate = ["rgb(199, 237, 204)", "lightyellow", "#b2b2b2"];
-    console.log(colorPlate[2]);
     for (var j = 0; j < changeBgBtn.length; j++) {
         (function(index) {
-            changeBgBtn[index].onclick = function() {
+            changeBgBtn[index].onclick = function(e) {
+                //why e.target.style.backgroundColor doeson't work
+                var bgColor = getComputedStyle(e.target).backgroundColor
                 chrome.tabs.executeScript(null, {
-                    code: "document.body.style.backgroundColor='" + colorPlate[index] + "'"
+                    code: "document.body.style.backgroundColor='" + bgColor + "'"
                 });
             }
         })(j);
     }
 }
 
-var colorPlate = document.querySelector('.colorLogo');
-var rorate0 = function(index) {
+var colorIcon = document.querySelector('.colorLogo');
+colorIcon.addEventListener("click", folderPaper);
 
-}
-colorPlate.addEventListener("click", function() {
+function folderPaper() {
     var otherLi = document.querySelectorAll('.colorBtnList li:nth-child(n+2)');
-    var animation1 = new Promise(function(resolve, reject) {
-        otherLi[0].style.display = "block";
-        window.setTimeout(function() {
-            // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-            otherLi[0].setAttribute("id", "display0deg");
-            otherLi[0].addEventListener("transitionend", function() {
-                console.log("over");
-                resolve("end");
-            });
-        }, 0);
-    });
-    // var animation2 = new Promise(function(resolve, reject) {
-    //     otherLi[1].style.display = "block";
-    //     window.setTimeout(function() {
-    //         // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-    //         otherLi[1].setAttribute("id","display0deg");
-    //         otherLi[1].addEventListener("transitionend", function() {
-    //             console.log("over");
-    //             resolve("end");
-    //         });
-    //     }, 0);
-    // });
 
-    animation1.then(function() {
-        otherLi[1].style.display = "block";
-        window.setTimeout(function() {
-            // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-            otherLi[1].setAttribute("id", "display0deg");
-            otherLi[1].addEventListener("transitionend", function() {
-                console.log("over");
+    function animation1() {
+        var animate = new Promise(function(resolve, reject) {
+            otherLi[0].style.display = "block";
+            window.setTimeout(function() {
+                // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+                otherLi[0].setAttribute("id", "display0deg");
+                otherLi[0].addEventListener("transitionend", function() {
+                    console.log("over");
+                    resolve("end");
+                });
+            }, 100);
 
-            });
-        }, 0);
-    })
-});
+        });
+        return animate
+    }
+
+    function animation2() {
+        var animate = new Promise(function(resolve, reject) {
+            otherLi[1].style.display = "block";
+            window.setTimeout(function() {
+                // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+                otherLi[1].setAttribute("id", "display0deg");
+                otherLi[1].addEventListener("transitionend", function() {
+                    console.log("over");
+                    resolve("end");
+                });
+            }, 5);
+
+        });
+        return animate
+    }
+
+    function animation3() {
+        var animate = new Promise(function(resolve, reject) {
+            otherLi[2].style.display = "block";
+            window.setTimeout(function() {
+                // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
+                otherLi[2].setAttribute("id", "display0deg");
+                otherLi[2].addEventListener("transitionend", function() {
+                    console.log("over");
+                    resolve("end");
+                });
+            }, 5);
+
+        });
+        return animate
+    }
+
+    animation1().then(animation2).then(animation3);
+}
 var selectBtn = document.querySelector('.select');
 
 var UIStyle = function() {};
