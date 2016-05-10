@@ -6,6 +6,7 @@ function changeColor() {
         (function(index) {
             changeBgBtn[index].onclick = function(e) {
                 //why e.target.style.backgroundColor doeson't work
+                //because changeBg class doesnt have background color property.it is added by yellow/green/pink...so use getComputedStyle
                 var bgColor = getComputedStyle(e.target).backgroundColor
                 chrome.tabs.executeScript(null, {
                     code: "document.body.style.backgroundColor='" + bgColor + "'"
@@ -21,15 +22,15 @@ colorIcon.addEventListener("click", folderPaper);
 function folderPaper() {
     var otherLi = document.querySelectorAll('.colorBtnList li:nth-child(n+2)');
 
-    function animation1() {
+    function animation(index) {
         var animate = new Promise(function(resolve, reject) {
-            otherLi[0].style.display = "block";
+            otherLi[index].style.display = "block";
             window.setTimeout(function() {
                 // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-                otherLi[0].setAttribute("id", "display0deg");
-                otherLi[0].addEventListener("transitionend", function() {
+                otherLi[index].setAttribute("id", "display0deg");
+                otherLi[index].addEventListener("transitionend", function() {
                     console.log("over");
-                    resolve("end");
+                    resolve(index+1);
                 });
             }, 100);
 
@@ -37,39 +38,7 @@ function folderPaper() {
         return animate
     }
 
-    function animation2() {
-        var animate = new Promise(function(resolve, reject) {
-            otherLi[1].style.display = "block";
-            window.setTimeout(function() {
-                // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-                otherLi[1].setAttribute("id", "display0deg");
-                otherLi[1].addEventListener("transitionend", function() {
-                    console.log("over");
-                    resolve("end");
-                });
-            }, 5);
-
-        });
-        return animate
-    }
-
-    function animation3() {
-        var animate = new Promise(function(resolve, reject) {
-            otherLi[2].style.display = "block";
-            window.setTimeout(function() {
-                // this has to be add id .if add class,the preority are small then css3 li:nth-child selector.transition will not work
-                otherLi[2].setAttribute("id", "display0deg");
-                otherLi[2].addEventListener("transitionend", function() {
-                    console.log("over");
-                    resolve("end");
-                });
-            }, 5);
-
-        });
-        return animate
-    }
-
-    animation1().then(animation2).then(animation3);
+    animation(0).then(animation).then(animation)
 }
 var selectBtn = document.querySelector('.select');
 

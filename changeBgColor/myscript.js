@@ -6,13 +6,11 @@ chrome.runtime.onMessage.addListener(
         var removeHighlight = function(e) {
             e.target.classList.remove('my-highlight');
         }
-        var addELement = function(e) {
+        var addELement = function(e, color) {
             e.target.classList.remove('my-highlight');
             //cancle link jump when click
             e.preventDefault();
             e.target.style.backgroundColor = "#C7EDCC";
-            console.log(e.target);
-            // alert(e);
         }
         if (request.selecting == "start") {
             startHover();
